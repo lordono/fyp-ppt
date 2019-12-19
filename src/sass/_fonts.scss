@@ -1,0 +1,84 @@
+h1 {
+  font-size: calc(#{$font-size} * 6.88);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: calc(#{$font-size} * 4.252);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: calc(#{$font-size} * 2.628);
+}
+
+h4 {
+  font-size: calc(#{$font-size} * 1.618);
+}
+
+h5,
+div,
+span {
+  font-size: $font-size;
+  font-weight: 300;
+}
+
+.light-bold {
+  font-weight: 700;
+}
+
+.title-with-subtitles {
+  line-height: 1.05;
+}
+
+.mt-1 {
+  margin-top: 1vmin;
+}
+
+.mt-2 {
+  margin-top: 2vmin;
+}
+
+.mt-3 {
+  margin-top: 3vmin;
+}
+
+.mt-4 {
+  margin-top: 4vmin;
+}
+
+.mt-5 {
+  margin-top: 5vmin;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-75 {
+  width: 75%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-75 {
+  height: 75%;
+}
+
+.h-50 {
+  height: 50%;
+}
+
+.h-25 {
+  height: 25%;
+}
