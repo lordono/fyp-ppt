@@ -8,10 +8,22 @@
 @import "body";
 @import "fonts";
 @import "illustration";
+@import "stageone";
+@import "stagetwo";
 
 .card-main {
   background: #acdcf3;
   border-radius: 10px;
   height: 100%;
   padding: 6.5vmin;
+}
+
+.stage-content {
+  height: 100%;
+  width: 100%;
+}
+
+.card-content {
+  width: 100%;
+  height: calc(100% - 129px);
 }

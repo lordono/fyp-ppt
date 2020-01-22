@@ -1,0 +1,32 @@
+{
+  "detect": {
+    "actual": [
+      {
+        "bounding_box": ["1190.0", "422.0", "1210.0", "436.0"],
+        "confidence": "1.00",
+        "type": "Bubbles"
+      },
+      {
+        "bounding_box": ["870.0", "400.0", "898.0", "426.0"],
+        "confidence": "1.00",
+        "type": "Blowholes"
+      }
+    ],
+    "prediction": [
+      {
+        "bounding_box": ["612.4", "307.5", "643.2", "338.9"],
+        "confidence": "0.9444",
+        "type": "Blowholes"
+      }
+    ]
+  },
+  "classify": {
+    "actual": {
+      "defective": true
+    },
+    "prediction": {
+      "confidence": "0.9444",
+      "defective": true
+    }
+  }
+}
