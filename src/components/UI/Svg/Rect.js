@@ -9,15 +9,15 @@ const UISvgRect = ({
   active = false
 }) => {
   const [x, setX] = useState(0);
-  const rectMultipler = 1 / 6;
+  const rectMultiplier = 1 / 6;
   useEffect(() => {
     if (width) {
-      if (pos === "center") setX((0.5 - rectMultipler / 2) * width);
-      else if (pos === "left") setX(rectMultipler * width);
-      else if (pos === "right") setX((1 - rectMultipler * 2) * width);
+      if (pos === "center") setX((0.5 - rectMultiplier / 2) * width);
+      else if (pos === "left") setX(rectMultiplier * width);
+      else if (pos === "right") setX((1 - rectMultiplier * 2) * width);
     }
-  }, [width, pos, rectMultipler]);
-  const rectWidth = width * rectMultipler;
+  }, [width, pos, rectMultiplier]);
+  const rectWidth = width * rectMultiplier;
   const actualY = rectWidth * 1.6 * y;
   const svgWidth = (rectWidth * 3) / 5;
   return (

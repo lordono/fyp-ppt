@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import UISvgRect from "./Svg/Rect";
 import UISvgLine from "./Svg/Line";
 import UISvgImage from "./Svg/Image";
@@ -8,8 +8,12 @@ import UISvgBug from "./Svg/Bug";
 import UISvgMagnifying from "./Svg/Magnifying";
 import UISvgCamera from "./Svg/Camera";
 import UISvgDefectCheck from "./Svg/DefectCheck";
+import { StoreContext } from "../../context";
 
-const UIIllustration = ({ stage }) => {
+const UIIllustration = () => {
+  const {
+    stageStore: [stage]
+  } = useContext(StoreContext);
   const svgRef = useRef(null);
   const [width, setWidth] = useState(1);
   useEffect(() => {
@@ -18,12 +22,14 @@ const UIIllustration = ({ stage }) => {
     }
   }, [svgRef]);
 
-  const rectMultipler = 1 / 6;
+  const rectMultiplier = 1 / 6;
   const y = 1.65;
-  const x = (0.375 - rectMultipler / 2) * width;
-  const rectWidth = width * rectMultipler;
+  const x = (0.375 - rectMultiplier / 2) * width;
+  const rectWidth = width * rectMultiplier;
   const actualY = rectWidth * 1.6 * y;
   const svgWidth = (rectWidth * 2) / 5;
+  // x1={x + rectWidth / 5}
+  // y2={actualY + 10}
   return (
     <div className="illustration-container">
       <svg className="illustration-svg" ref={svgRef}>
@@ -35,7 +41,14 @@ const UIIllustration = ({ stage }) => {
         <UISvgLine width={width} pos1="l" pos2="l" y={3} animate={false} />
 
         {/* Image */}
-        <UISvgImage width={svgWidth} x={x + rectWidth / 5} y={actualY + 10} />
+        {/* <UISvgImage
+          cardWidth={rectWidth}
+          width={svgWidth}
+          x1={1}
+          y1={1}
+          x2={0}
+          y2={2}
+        /> */}
         {/* Rects */}
         <UISvgRect
           y={0}

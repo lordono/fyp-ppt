@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
+import axios from "axios";
+import { motion } from "framer-motion";
+
+import { StoreContext } from "../../../context";
 import StageOneUpload from "./Upload";
 import StageOneDescription from "./Description";
 import UILoading from "../../UI/Loading";
-import { motion } from "framer-motion";
-import axios from "axios";
 
-const StageOne = ({
-  image,
-  setImage,
-  name,
-  setName,
-  setStage,
-  loading,
-  setLoading
-}) => {
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+const StageOne = () => {
+  const {
+    stageStore: [, setStage],
+    imageStore: [image, setImage],
+    nameStore: [name, setName],
+    loadingStore: [loading, setLoading],
+    classifyResultStore: [, setClassifyResult]
+  } = useContext(StoreContext);
+
   const clickAnalyze = async () => {
     if (image && name) {
       setLoading(true);
@@ -21,11 +27,22 @@ const StageOne = ({
         image: image.replace(/^data:image\/\w+;base64,/, ""),
         name
       };
-      const results = await axios.post(
-        `${process.env.REACT_APP_BACKEND_HOST}/classify`,
-        postData
-      );
-      console.log(results);
+      // placeholder
+      await sleep(2000);
+      setClassifyResult({
+        actual: {
+          defective: false
+        },
+        prediction: {
+          confidence: "0.9444",
+          defective: true
+        }
+      });
+      // const results = await axios.post(
+      //   `${process.env.REACT_APP_BACKEND_HOST}/classify`,
+      //   postData
+      // );
+      // console.log(results);
       setStage(2);
     }
   };

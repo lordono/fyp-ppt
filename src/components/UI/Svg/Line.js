@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const calcX = (width, rectMultipler, position) => {
   if (position === "c") {
@@ -19,10 +20,28 @@ const UISvgLine = ({ width, pos1, pos2, y, animate = false }) => {
     x2: calcX(width, rectMultipler, pos2),
     y1: actualY + rectWidth / 2,
     y2: actualY + rectWidth * 2,
-    strokeDasharray: animate ? "3" : "0",
     stroke: animate ? "orange" : "gray"
   };
-  return <line {...coordProps} strokeWidth="3" />;
+  if (animate) {
+    return (
+      <motion.line
+        initial={{
+          strokeDashoffset: 10
+        }}
+        animate={{ strokeDashoffset: -300 }}
+        transition={{
+          duration: 10,
+          ease: "linear",
+          loop: Infinity
+        }}
+        {...coordProps}
+        strokeDasharray={3}
+        strokeWidth="3"
+      />
+    );
+  } else {
+    return <line {...coordProps} strokeWidth="3" />;
+  }
 };
 
 export default UISvgLine;

@@ -10,6 +10,15 @@ const UISvgBinaryCheck = ({ x, y, width, active = false }) => {
       width={width}
       xmlns="http://www.w3.org/2000/svg"
     >
+      <filter id="duotone">
+        <feColorMatrix
+          type="matrix"
+          values=".33 .33 .33 0 0
+        .33 .33 .33 0 0
+        .33 .33 .33 0 0
+         0   0   0  1 0"
+        ></feColorMatrix>
+      </filter>
       <g id="Tempered_Glass-Smartphone" data-name="Tempered Glass-Smartphone">
         <rect fill="#3d9ae2" height="54" rx="4" width="30" x="5" y="7" />
         <path

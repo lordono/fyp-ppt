@@ -1,25 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import UIIllustration from "./components/UI/Illustration";
 import StageOne from "./components/Stage/One/One";
 import StageTwo from "./components/Stage/Two/Two";
 import { AnimatePresence } from "framer-motion";
 import UILoading from "./components/UI/Loading";
+import { StoreContext } from "./context";
 
 const App = () => {
-  const [stage, setStage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState(null);
-  const [name, setName] = useState("");
-  const stageProps = {
-    image,
-    setImage,
-    name,
-    setName,
-    setStage,
-    loading,
-    setLoading
-  };
-  console.log(loading);
+  const {
+    stageStore: [stage, setStage]
+  } = useContext(StoreContext);
   return (
     <div className="container is-fluid h-100">
       <div className="columns h-100">
@@ -34,15 +24,15 @@ const App = () => {
               </div>
               <div className="content stage-content">
                 <AnimatePresence>
-                  {stage === 1 && <StageOne {...stageProps} />}
-                  {stage === 2 && <StageTwo {...stageProps} />}
+                  {stage === 1 && <StageOne />}
+                  {stage === 2 && <StageTwo />}
                 </AnimatePresence>
               </div>
             </div>
           </div>
         </div>
         <div className="column h-100">
-          <UIIllustration stage={stage} setStage={setStage} />
+          <UIIllustration />
         </div>
       </div>
     </div>

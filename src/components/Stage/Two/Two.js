@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import StageTwoBinaryAnalysis from "./Binary/Analysis";
 import UILoading from "../../UI/Loading";
 import StageTwoDescription from "./Description";
+import { StoreContext } from "../../../context";
 
-const StageTwo = ({ image, setStage, loading, setLoading }) => {
-  const [hasDefect, setHasDefect] = useState(true);
+const StageTwo = () => {
+  const {
+    stageStore: [, setStage],
+    imageStore: [image],
+    loadingStore: [loading, setLoading],
+    classifyResultStore: [classifyResult]
+  } = useContext(StoreContext);
   useEffect(() => {
     setLoading(false);
   }, [setLoading]);
@@ -20,8 +26,8 @@ const StageTwo = ({ image, setStage, loading, setLoading }) => {
           <div className="stage-two-image">
             <img src={image} alt="Defect" />
           </div>
-          <StageTwoBinaryAnalysis />
-          {hasDefect && (
+          <StageTwoBinaryAnalysis result={classifyResult} />
+          {classifyResult.prediction.defective && (
             <div
               style={{
                 marginTop: "2vmin",

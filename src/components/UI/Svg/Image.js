@@ -1,8 +1,20 @@
 import React from "react";
 
-const UISvgImage = ({ x, y, width }) => {
+const UISvgImage = ({ x1, x2, y1, y2, width, cardWidth }) => {
+  const yOffset = cardWidth * 0.3;
+  const xOffset = cardWidth * 1.3;
+  // x1: x1 * cardWidth * 1.65 + xOffset,
+  // x2: x2 * cardWidth * 1.65 + xOffset,
+  // y1: y1 * cardWidth * 1.65 + yOffset,
+  // y2: y2 * cardWidth * 1.65 + yOffset
   return (
-    <svg x={x} y={y} height={width} width={width} viewBox="0 -28 462.00724 462">
+    <svg
+      x={100}
+      y={100}
+      height={width}
+      width={width}
+      viewBox="0 -28 462.00724 462"
+    >
       <path
         d="m231.003906 37.054688-21.121094 5.65625h21.121094zm0 0"
         fill="#2488ff"

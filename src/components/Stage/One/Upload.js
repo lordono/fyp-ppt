@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { StoreContext } from "../../../context";
 import PhotoImg from "../../../img/camera.png";
 
 const toBase64 = file =>
@@ -9,7 +11,11 @@ const toBase64 = file =>
     reader.onerror = error => reject(error);
   });
 
-const StageOneUpload = ({ image, setImage, setName }) => {
+const StageOneUpload = () => {
+  const {
+    imageStore: [image, setImage],
+    nameStore: [, setName]
+  } = useContext(StoreContext);
   const onUpload = async e => {
     if (e.target.files) {
       const name = e.target.files[0].name;
@@ -35,6 +41,7 @@ const StageOneUpload = ({ image, setImage, setName }) => {
       <div className="avatar-preview">
         <div
           id="imagePreview"
+          style={{ overflow: "hidden", borderRadius: "25%" }}
           // style="background-image: url(http://i.pravatar.cc/500?img=7);"
         >
           <img src={image ? image : PhotoImg} alt="Camera Taken" />
