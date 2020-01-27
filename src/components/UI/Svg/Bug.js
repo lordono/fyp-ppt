@@ -1,8 +1,16 @@
 import React from "react";
 
 const UISvgBug = ({ x, y, width, active = false }) => {
+  const activeProps = active ? {} : { filter: "url(#duotone)" };
   return (
-    <svg x={x} y={y} height={width} viewBox="0 0 466 466.8" width={width}>
+    <svg
+      x={x}
+      y={y}
+      height={width}
+      viewBox="0 0 466 466.8"
+      width={width}
+      {...activeProps}
+    >
       <path d="m240.390625 33-14 .039062v73.359376h14zm0 0" fill="#f4b844" />
       <path
         d="m324.390625 63.398438h-42.929687c-3.886719.011718-7.039063 3.144531-7.070313 7.03125v35.96875h14v-29h42.828125c3.894531.027343 7.089844-3.074219 7.171875-6.96875v-33.039063l-14 .03125zm0 0"

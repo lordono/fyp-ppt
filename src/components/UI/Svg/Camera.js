@@ -1,8 +1,16 @@
 import React from "react";
 
 const UISvgCamera = ({ x, y, width, active = false }) => {
+  const activeProps = active ? {} : { filter: "url(#duotone)" };
   return (
-    <svg x={x} y={y} height={width} width={width} viewBox="0 0 512 512">
+    <svg
+      x={x}
+      y={y}
+      height={width}
+      width={width}
+      viewBox="0 0 512 512"
+      {...activeProps}
+    >
       <g>
         <path
           d="m75 151c-8.291 0-15-6.709-15-15v-30c0-8.291 6.709-15 15-15s15 6.709 15 15v30c0 8.291-6.709 15-15 15z"

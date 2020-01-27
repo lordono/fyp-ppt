@@ -28,21 +28,21 @@ const StageOne = () => {
         name
       };
       // placeholder
-      await sleep(2000);
-      setClassifyResult({
-        actual: {
-          defective: false
-        },
-        prediction: {
-          confidence: "0.9444",
-          defective: true
-        }
-      });
-      // const results = await axios.post(
-      //   `${process.env.REACT_APP_BACKEND_HOST}/classify`,
-      //   postData
-      // );
-      // console.log(results);
+      // await sleep(2000);
+      // setClassifyResult({
+      //   actual: {
+      //     defective: false
+      //   },
+      //   prediction: {
+      //     confidence: "0.9444",
+      //     defective: true
+      //   }
+      // });
+      const results = await axios.post(
+        `${process.env.REACT_APP_BACKEND_HOST}/classify`,
+        postData
+      );
+      setClassifyResult(results.data);
       setStage(2);
     }
   };

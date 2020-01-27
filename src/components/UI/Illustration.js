@@ -12,7 +12,9 @@ import { StoreContext } from "../../context";
 
 const UIIllustration = () => {
   const {
-    stageStore: [stage]
+    stageStore: [stage],
+    loadingStore: [loading],
+    classifyResultStore: [classifyResult]
   } = useContext(StoreContext);
   const svgRef = useRef(null);
   const [width, setWidth] = useState(1);
@@ -22,45 +24,64 @@ const UIIllustration = () => {
     }
   }, [svgRef]);
 
-  const rectMultiplier = 1 / 6;
-  const y = 1.65;
-  const x = (0.375 - rectMultiplier / 2) * width;
-  const rectWidth = width * rectMultiplier;
-  const actualY = rectWidth * 1.6 * y;
-  const svgWidth = (rectWidth * 2) / 5;
-  // x1={x + rectWidth / 5}
-  // y2={actualY + 10}
   return (
     <div className="illustration-container">
       <svg className="illustration-svg" ref={svgRef}>
         {/* Lines */}
-        <UISvgLine width={width} pos1="c" pos2="c" y={0} animate={false} />
-        <UISvgLine width={width} pos1="c" pos2="l" y={1} animate={true} />
-        <UISvgLine width={width} pos1="c" pos2="r" y={1} animate={false} />
-        <UISvgLine width={width} pos1="l" pos2="l" y={2} animate={false} />
-        <UISvgLine width={width} pos1="l" pos2="l" y={3} animate={false} />
+        <UISvgLine
+          width={width}
+          pos1="c"
+          pos2="c"
+          y={0}
+          animate={stage === 1 && loading}
+        />
+        <UISvgLine
+          width={width}
+          pos1="c"
+          pos2="l"
+          y={1}
+          animate={
+            stage === 2 && classifyResult.prediction.defective && !loading
+          }
+        />
+        <UISvgLine
+          width={width}
+          pos1="c"
+          pos2="r"
+          y={1}
+          animate={
+            stage === 2 && !classifyResult.prediction.defective && !loading
+          }
+        />
+        <UISvgLine
+          width={width}
+          pos1="l"
+          pos2="l"
+          y={2}
+          animate={stage === 2 && loading}
+        />
+        <UISvgLine
+          width={width}
+          pos1="l"
+          pos2="l"
+          y={3}
+          animate={stage === 3}
+        />
 
-        {/* Image */}
-        {/* <UISvgImage
-          cardWidth={rectWidth}
-          width={svgWidth}
-          x1={1}
-          y1={1}
-          x2={0}
-          y2={2}
-        /> */}
         {/* Rects */}
         <UISvgRect
           y={0}
           width={width}
           SvgComponent={UISvgCamera}
           title="Camera"
+          active={stage === 1}
         />
         <UISvgRect
           y={1}
           width={width}
           SvgComponent={UISvgBinaryCheck}
           title="Binary Check"
+          active={(stage === 1 && loading) || (stage === 2 && !loading)}
         />
         <UISvgRect
           y={2}
@@ -68,6 +89,10 @@ const UIIllustration = () => {
           SvgComponent={UISvgBug}
           pos="left"
           title="Defect Found"
+          active={
+            (stage === 2 && classifyResult.prediction.defective) ||
+            (stage === 3 && loading)
+          }
         />
         <UISvgRect
           y={2}
@@ -75,6 +100,7 @@ const UIIllustration = () => {
           SvgComponent={UISvgCheck}
           pos="right"
           title="No Defect"
+          active={stage === 2 && !classifyResult.prediction.defective}
         />
         <UISvgRect
           y={3}
@@ -82,6 +108,7 @@ const UIIllustration = () => {
           SvgComponent={UISvgDefectCheck}
           pos="left"
           title="Defect Check"
+          active={stage === 3 || (stage === 2 && loading)}
         />
         <UISvgRect
           y={4}
@@ -89,6 +116,7 @@ const UIIllustration = () => {
           SvgComponent={UISvgMagnifying}
           pos="left"
           title="Defect Details"
+          active={stage === 3 && !loading}
         />
       </svg>
     </div>

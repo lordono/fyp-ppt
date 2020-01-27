@@ -1,6 +1,7 @@
 import React from "react";
 
 const UISvgCheck = ({ x, y, width, active = false }) => {
+  const activeProps = active ? {} : { filter: "url(#duotone)" };
   return (
     <svg
       x={x + width / 10}
@@ -8,6 +9,7 @@ const UISvgCheck = ({ x, y, width, active = false }) => {
       height={width}
       viewBox="0 0 512.0002 512"
       width={width}
+      {...activeProps}
     >
       <path
         d="m270 377c0 74.699219-60.300781 135-135 135s-135-60.300781-135-135 60.300781-135 135-135 135 60.300781 135 135zm0 0"

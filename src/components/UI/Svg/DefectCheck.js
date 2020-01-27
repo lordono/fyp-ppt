@@ -1,8 +1,16 @@
 import React from "react";
 
 const UISvgDefectCheck = ({ x, y, width, active = false }) => {
+  const activeProps = active ? {} : { filter: "url(#duotone)" };
   return (
-    <svg x={x} y={y} height={width} viewBox="0 0 64 64" width={width}>
+    <svg
+      x={x}
+      y={y}
+      height={width}
+      viewBox="0 0 64 64"
+      width={width}
+      {...activeProps}
+    >
       <g id="Device-Control">
         <path
           d="m57 21v34h-50v-34a4 4 0 0 1 4-4h42a4.009 4.009 0 0 1 4 4z"

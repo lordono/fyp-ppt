@@ -1,6 +1,7 @@
 import React from "react";
 
 const UISvgMagnifying = ({ x, y, width, active = false }) => {
+  const activeProps = active ? {} : { filter: "url(#duotone)" };
   return (
     <svg
       x={x + width / 10}
@@ -9,6 +10,7 @@ const UISvgMagnifying = ({ x, y, width, active = false }) => {
       height={width}
       viewBox="0 0 64 64"
       width={width}
+      {...activeProps}
     >
       <g>
         <path

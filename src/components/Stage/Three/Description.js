@@ -1,9 +1,9 @@
 import React from "react";
 
-const StageThreeDescription = () => {
+const StageThreeDescription = ({ results }) => {
   return (
     <div className="stage-two-description has-text-grey-dark">
-      <h1 className="has-text-grey-dark">Binary Defect Analysis</h1>
+      <h1 className="has-text-grey-dark">Detection Analysis</h1>
       <div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nibh
         arcu, sagittis eget enim sit amet, dignissim aliquam sem. Quisque tellus

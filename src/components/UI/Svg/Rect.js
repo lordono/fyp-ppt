@@ -29,9 +29,13 @@ const UISvgRect = ({
         height={rectWidth}
         rx="15"
         fill="#e8e8e8"
-        className={`${active ? "" : "grayscale"}`}
       />
-      <SvgComponent width={svgWidth} x={x + rectWidth / 5} y={actualY + 10} />
+      <SvgComponent
+        width={svgWidth}
+        x={x + rectWidth / 5}
+        y={actualY + 10}
+        active={active}
+      />
       <text
         x={x + rectWidth / 2}
         y={actualY + rectWidth - 12.5}

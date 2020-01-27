@@ -15,7 +15,7 @@ const StageTwoBinaryAnalysis = ({ result }) => {
           <div>Prediction</div>
         </div>
         <div className="card">
-          <h1>{Math.round(result.prediction.confidence * 100)}%</h1>
+          <h1>{Math.abs(Math.round(result.prediction.confidence * 100))}%</h1>
           <div>Confidence</div>
         </div>
         <div className={bgActual}>

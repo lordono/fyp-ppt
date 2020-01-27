@@ -1,6 +1,7 @@
 import React from "react";
 
 const UISvgBinaryCheck = ({ x, y, width, active = false }) => {
+  const activeProps = active ? {} : { filter: "url(#duotone)" };
   return (
     <svg
       x={x}
@@ -9,6 +10,7 @@ const UISvgBinaryCheck = ({ x, y, width, active = false }) => {
       viewBox="0 0 64 64"
       width={width}
       xmlns="http://www.w3.org/2000/svg"
+      {...activeProps}
     >
       <filter id="duotone">
         <feColorMatrix

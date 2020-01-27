@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import UIIllustration from "./components/UI/Illustration";
 import StageOne from "./components/Stage/One/One";
 import StageTwo from "./components/Stage/Two/Two";
+import StageThree from "./components/Stage/Three/Three";
 import { AnimatePresence } from "framer-motion";
-import UILoading from "./components/UI/Loading";
 import { StoreContext } from "./context";
 
 const App = () => {
   const {
-    stageStore: [stage, setStage]
+    stageStore: [stage]
   } = useContext(StoreContext);
   return (
     <div className="container is-fluid h-100">
@@ -26,6 +26,7 @@ const App = () => {
                 <AnimatePresence>
                   {stage === 1 && <StageOne />}
                   {stage === 2 && <StageTwo />}
+                  {stage === 3 && <StageThree />}
                 </AnimatePresence>
               </div>
             </div>
